@@ -10,107 +10,113 @@ using TrashCollectorProject.Models;
 
 namespace TrashCollectorProject.Controllers
 {
-    public class TrashCollectorsController : Controller
+    public class CustomersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TrashCollectors
+        // GET: Customers
         public ActionResult Index()
         {
-            return View(db.TrashCollectors.ToList());
+            return View(db.Customers.ToList());
         }
 
-        // GET: TrashCollectors/Details/5
-        public ActionResult Details(string id)
+        // GET: Customers/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrashCollector trashCollector = db.TrashCollectors.Find(id);
-            if (trashCollector == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(trashCollector);
+            return View(customer);
         }
 
-        // GET: TrashCollectors/Create
+        // GET: Customers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TrashCollectors/Create
+        // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmailAddress")] TrashCollector trashCollector)
+        public ActionResult Create([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,PickupDate,Wallet")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.TrashCollectors.Add(trashCollector);
+                db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(trashCollector);
+            return View(customer);
         }
 
-        // GET: TrashCollectors/Edit/5
-        public ActionResult Edit(string id)
+        //public ActionResult ChoosePickupDate(Customer customer)
+        //{
+        //    string displayPickupDate;
+        //    return View(displayPickupDate);
+        //}
+
+        // GET: Customers/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrashCollector trashCollector = db.TrashCollectors.Find(id);
-            if (trashCollector == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(trashCollector);
+            return View(customer);
         }
 
-        // POST: TrashCollectors/Edit/5
+        // POST: Customers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmailAddress")] TrashCollector trashCollector)
+        public ActionResult Edit([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,PickupDate,Wallet")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(trashCollector).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(trashCollector);
+            return View(customer);
         }
 
-        // GET: TrashCollectors/Delete/5
-        public ActionResult Delete(string id)
+        // GET: Customers/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrashCollector trashCollector = db.TrashCollectors.Find(id);
-            if (trashCollector == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(trashCollector);
+            return View(customer);
         }
 
-        // POST: TrashCollectors/Delete/5
+        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            TrashCollector trashCollector = db.TrashCollectors.Find(id);
-            db.TrashCollectors.Remove(trashCollector);
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

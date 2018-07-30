@@ -195,9 +195,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\TrashCollectorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,13 +214,24 @@
     <Compile Include="Migrations\201807270149409_UserroleMigration.Designer.cs">
       <DependentUpon>201807270149409_UserroleMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807271842132_AddedCustomerCustomerAndEmployee.cs" />
+    <Compile Include="Migrations\201807271842132_AddedCustomerCustomerAndEmployee.Designer.cs">
+      <DependentUpon>201807271842132_AddedCustomerCustomerAndEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807272015262_AddedCustomerAndEmployeeModels.cs" />
+    <Compile Include="Migrations\201807272015262_AddedCustomerAndEmployeeModels.Designer.cs">
+      <DependentUpon>201807272015262_AddedCustomerAndEmployeeModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807290138344_FixedCustomerAndEmployeeModels.cs" />
+    <Compile Include="Migrations\201807290138344_FixedCustomerAndEmployeeModels.Designer.cs">
+      <DependentUpon>201807290138344_FixedCustomerAndEmployeeModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\TrashCollector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -282,11 +294,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\TrashCollectors\Create.cshtml" />
-    <Content Include="Views\TrashCollectors\Delete.cshtml" />
-    <Content Include="Views\TrashCollectors\Details.cshtml" />
-    <Content Include="Views\TrashCollectors\Edit.cshtml" />
-    <Content Include="Views\TrashCollectors\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +330,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807270149409_UserroleMigration.resx">
       <DependentUpon>201807270149409_UserroleMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807271842132_AddedCustomerCustomerAndEmployee.resx">
+      <DependentUpon>201807271842132_AddedCustomerCustomerAndEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807272015262_AddedCustomerAndEmployeeModels.resx">
+      <DependentUpon>201807272015262_AddedCustomerAndEmployeeModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807290138344_FixedCustomerAndEmployeeModels.resx">
+      <DependentUpon>201807290138344_FixedCustomerAndEmployeeModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

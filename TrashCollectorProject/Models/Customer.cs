@@ -17,7 +17,8 @@ namespace TrashCollectorProject.Models
         public string FullName { get; set; }
         public string StreetAddress { get; set; }
         public int ZipCode { get; set; }
-        public DateTime PickupDate { get; set; }
+        public string WeeklyPickupDay { get; set; }
+        public DateTime OneTimePickupDate { get; set; }
         public double Wallet { get; set; }
     }
 }

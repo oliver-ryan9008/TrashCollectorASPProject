@@ -18,7 +18,7 @@ namespace TrashCollectorProject.Migrations
                         FullName = c.String(),
                         StreetAddress = c.String(),
                         ZipCode = c.Int(nullable: false),
-                        PickupDate = c.DateTime(nullable: false),
+                        OneTimePickupDate = c.DateTime(nullable: false),
                         Wallet = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.CustomerId);

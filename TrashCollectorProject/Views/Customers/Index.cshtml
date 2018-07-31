@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Enter Your Information", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,11 +30,14 @@
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PickupDate)
+            @Html.DisplayNameFor(model => model.WeeklyPickupDay)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Wallet)
+            @Html.DisplayNameFor(model => model.OneTimePickupDate)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Wallet)
+        </th>*@
         <th></th>
     </tr>
 
@@ -59,7 +62,7 @@
             @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PickupDate)
+            @Html.DisplayFor(modelItem => item.OneTimePickupDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Wallet)

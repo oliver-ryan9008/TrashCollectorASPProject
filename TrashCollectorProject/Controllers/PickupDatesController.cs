@@ -10,129 +10,107 @@ using TrashCollectorProject.Models;
 
 namespace TrashCollectorProject.Controllers
 {
-    public class CustomersController : Controller
+    public class PickupDatesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Customers
+        // GET: PickupDates
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.PickupDates.ToList());
         }
 
-        // GET: Customers/Details/5
+        // GET: PickupDates/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            PickupDate pickupDate = db.PickupDates.Find(id);
+            if (pickupDate == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(pickupDate);
         }
 
-        //public ActionResult ChooseNewOneTimePickup()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult ChooseNewOneTimePickup(Customer customer)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //db.Customers.Add(customer);
-        //    }
-        //    return View();
-        //}
-
-        // GET: Customers/Create
+        // GET: PickupDates/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: PickupDates/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,WeeklyPickupDay,OneTimePickupDate,Wallet")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerId,PickupDates")] PickupDate pickupDate, Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                db.PickupDates.Add(customer.OneTimePickupDate().ToString());
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+            return View(pickupDate);
         }
 
-        //public ActionResult ChoosePickupDate(Customer customer)
-        //{
-        //    string displayPickupDate;
-        //    return View(displayPickupDate);
-        //}
-
-        // GET: Customers/Edit/5
+        // GET: PickupDates/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            PickupDate pickupDate = db.PickupDates.Find(id);
+            if (pickupDate == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(pickupDate);
         }
 
-        // POST: Customers/Edit/5
+        // POST: PickupDates/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,PickupDate,Wallet")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerId,PickupDates")] PickupDate pickupDate)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(pickupDate).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(customer);
+            return View(pickupDate);
         }
 
-        // GET: Customers/Delete/5
+        // GET: PickupDates/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            PickupDate pickupDate = db.PickupDates.Find(id);
+            if (pickupDate == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(pickupDate);
         }
 
-        // POST: Customers/Delete/5
+        // POST: PickupDates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            PickupDate pickupDate = db.PickupDates.Find(id);
+            db.PickupDates.Remove(pickupDate);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

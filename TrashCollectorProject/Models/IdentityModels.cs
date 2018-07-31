@@ -33,5 +33,6 @@ namespace TrashCollectorProject.Models
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<PickupDate> PickupDates { get; set; }
     }
 }

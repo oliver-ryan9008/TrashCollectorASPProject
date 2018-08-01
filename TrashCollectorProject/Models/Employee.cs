@@ -15,5 +15,6 @@ namespace TrashCollectorProject.Models
         public string Password { get; set; }
         public string FullName { get; set; }
         public int ZipCode { get; set; }
+        public List<Customer> pickupList = new List<Customer>();
     }
 }

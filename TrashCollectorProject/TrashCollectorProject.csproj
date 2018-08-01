@@ -247,6 +247,31 @@
     <Compile Include="Migrations\201807311457092_ClearingExceptionForNoKeyFound.Designer.cs">
       <DependentUpon>201807311457092_ClearingExceptionForNoKeyFound.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807311542337_AddedMoneyOwedToCustomers.cs" />
+    <Compile Include="Migrations\201807311542337_AddedMoneyOwedToCustomers.Designer.cs">
+      <DependentUpon>201807311542337_AddedMoneyOwedToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311615514_AddedDisplayMoneyOwedMethod.cs" />
+    <Compile Include="Migrations\201807311615514_AddedDisplayMoneyOwedMethod.Designer.cs">
+      <DependentUpon>201807311615514_AddedDisplayMoneyOwedMethod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311956105_AddedRecurringPickupDay.cs" />
+    <Compile Include="Migrations\201807311956105_AddedRecurringPickupDay.Designer.cs">
+      <DependentUpon>201807311956105_AddedRecurringPickupDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011411232_AddedNullableToDateTime.cs" />
+    <Compile Include="Migrations\201808011411232_AddedNullableToDateTime.Designer.cs">
+      <DependentUpon>201808011411232_AddedNullableToDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011659085_ChangedCustomerIdToString.cs" />
+    <Compile Include="Migrations\201808011817068_TurnedCustomerIdBackToInt.cs" />
+    <Compile Include="Migrations\201808011817068_TurnedCustomerIdBackToInt.Designer.cs">
+      <DependentUpon>201808011817068_TurnedCustomerIdBackToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011832440_AddedUserIdToCustomerDatabase.cs" />
+    <Compile Include="Migrations\201808011832440_AddedUserIdToCustomerDatabase.Designer.cs">
+      <DependentUpon>201808011832440_AddedUserIdToCustomerDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -331,6 +356,7 @@
     <Content Include="Views\PickupDates\Details.cshtml" />
     <Content Include="Views\PickupDates\Edit.cshtml" />
     <Content Include="Views\PickupDates\Index.cshtml" />
+    <Content Include="Views\Customers\ChooseNewOneTimePickup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +407,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807311457092_ClearingExceptionForNoKeyFound.resx">
       <DependentUpon>201807311457092_ClearingExceptionForNoKeyFound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311542337_AddedMoneyOwedToCustomers.resx">
+      <DependentUpon>201807311542337_AddedMoneyOwedToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311615514_AddedDisplayMoneyOwedMethod.resx">
+      <DependentUpon>201807311615514_AddedDisplayMoneyOwedMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311956105_AddedRecurringPickupDay.resx">
+      <DependentUpon>201807311956105_AddedRecurringPickupDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011411232_AddedNullableToDateTime.resx">
+      <DependentUpon>201808011411232_AddedNullableToDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011817068_TurnedCustomerIdBackToInt.resx">
+      <DependentUpon>201808011817068_TurnedCustomerIdBackToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011832440_AddedUserIdToCustomerDatabase.resx">
+      <DependentUpon>201808011832440_AddedUserIdToCustomerDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

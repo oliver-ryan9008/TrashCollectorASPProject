@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 using TrashCollectorProject.Models;
 
@@ -12,11 +13,13 @@ namespace TrashCollectorProject.Controllers
 {
     public class CustomersController : Controller
     {
+        
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Customers
         public ActionResult Index()
         {
+            
             return View(db.Customers.ToList());
         }
 
@@ -35,21 +38,36 @@ namespace TrashCollectorProject.Controllers
             return View(customer);
         }
 
-        //public ActionResult ChooseNewOneTimePickup()
+        public ActionResult DisplayMoneyOwed(int id)
+        {
+            var moneyOwed = (from m in db.Customers where m.CustomerId == id select m.MoneyOwed).FirstOrDefault().ToString();
+            var displayMoney = "$" + moneyOwed;
+            return View(displayMoney);
+        }
+
+        //public ActionResult AddAllPickupDates(Customer customer, PickupDate pickupDate)
         //{
-        //    return View();
+        //    var allPickups = (from p in db.Customers where DateTime.Now <= pickupDate.PickupDates select p).ToList();
         //}
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult ChooseNewOneTimePickup(Customer customer)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //db.Customers.Add(customer);
-        //    }
-        //    return View();
-        //}
+        public ActionResult ChooseNewOneTimePickup()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChooseNewOneTimePickup([Bind(Include = "OneTimePickupDate")] Customer customer)
+        {
+            var userId = User.Identity.GetUserId();
+            var identityToInt = userId;
+            var getCustomerChoice = (from c in db.Customers where userId == c.UserId select c).First();
+            getCustomerChoice.OneTimePickupDate = customer.OneTimePickupDate;
+            
+            db.SaveChanges();
+            
+            return RedirectToAction("Index");
+        }
 
         // GET: Customers/Create
         public ActionResult Create()
@@ -62,10 +80,11 @@ namespace TrashCollectorProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,WeeklyPickupDay,OneTimePickupDate,Wallet")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,WeeklyPickupDay,MoneyOwed")] Customer customer)
         {
             if (ModelState.IsValid)
             {
+                customer.UserId = User.Identity.GetUserId();                
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -100,7 +119,7 @@ namespace TrashCollectorProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,PickupDate,Wallet")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerId,EmailAddress,UserName,Password,FullName,StreetAddress,ZipCode,WeeklyPickupDay,OneTimePickupDate,MoneyOwed")] Customer customer)
         {
             if (ModelState.IsValid)
             {

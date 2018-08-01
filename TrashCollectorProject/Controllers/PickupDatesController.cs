@@ -46,17 +46,26 @@ namespace TrashCollectorProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerId,PickupDates")] PickupDate pickupDate, Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.PickupDates.Add(customer.OneTimePickupDate().ToString());
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //public ActionResult AddPickupsForDay([Bind(Include = "CustomerId, PickupDates, RecurringPickupDayOfWeek")] PickupDate pickupDate, Customer customer)
+        //{
+        //    var oneTimePickups = (from p in db.Customers where p.OneTimePickupDate < DateTime.Now select p).ToList();
+        //    var weeklyPickups = (from w in db.Customers where w.WeeklyPickupDay = DateTime.Now.DayOfWeek.ToString() select w).ToList();
+        //    var allPickups = 
+        //                // ^Move select one time pickup to an option on customer view and pass in result to weeklyPickups here^
+            
+        //    db.PickupDates.Add(pickupDate);
+        //    db.SaveChanges();
+        //    return View();
 
-            return View(pickupDate);
-        }
+        //    //if (ModelState.IsValid)
+        //    //{
+        //    //    db.PickupDates.Add(pickupDate);
+        //    //    db.SaveChanges();
+        //    //    return RedirectToAction("Index");
+        //    //}
+
+        //    //return View(pickupDate);
+        //}
 
         // GET: PickupDates/Edit/5
         public ActionResult Edit(int? id)

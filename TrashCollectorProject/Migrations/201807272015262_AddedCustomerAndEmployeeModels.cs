@@ -19,7 +19,7 @@ namespace TrashCollectorProject.Migrations
                         StreetAddress = c.String(),
                         ZipCode = c.Int(nullable: false),
                         OneTimePickupDate = c.DateTime(nullable: false),
-                        Wallet = c.Double(nullable: false),
+                        MoneyOwed = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.CustomerId);
             

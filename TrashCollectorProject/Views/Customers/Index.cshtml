@@ -8,7 +8,9 @@
 
 <p>
     @Html.ActionLink("Enter Your Information", "Create")
+    
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -35,9 +37,9 @@
         <th>
             @Html.DisplayNameFor(model => model.OneTimePickupDate)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Wallet)
-        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.MoneyOwed)
+        </th>
         <th></th>
     </tr>
 
@@ -62,17 +64,25 @@
             @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.WeeklyPickupDay)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.OneTimePickupDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Wallet)
+            @Html.DisplayFor(modelItem => item.MoneyOwed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId })
         </td>
     </tr>
 }
 
 </table>
+<p>
+    <br /><br /><br /><br /><br /><br /><br /><br />
+    @Html.ActionLink("Schedule A One-Time Pickup", "ChooseNewOneTimePickup")
+    <br /><br /><br /><br />
+</p>

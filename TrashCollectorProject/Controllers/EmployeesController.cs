@@ -20,6 +20,25 @@ namespace TrashCollectorProject.Controllers
             return View(db.Employees.ToList());
         }
 
+        public void GetTodayDayOfWeek()
+        {
+            string todayDayOfWeek = DateTime.Now.DayOfWeek.ToString();
+            string date = DateTime.Now.ToString();
+        }
+
+        // GET: Pickups
+        //public ActionResult TodayPickups(Employee employee, Customer customer, PickupDate pickupDate)
+        //{
+        //    if (employee.pickupList.Count() > 0)
+        //    {
+        //        var scheduleToday = (from p in customer. where )
+        //        return View();
+        //    }
+        //    return View(db.PickupDates);
+        //}
+
+        
+
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {

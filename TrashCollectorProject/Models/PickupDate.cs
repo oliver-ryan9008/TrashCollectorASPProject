@@ -11,5 +11,6 @@ namespace TrashCollectorProject.Models
         [Key]
         public int CustomerId { get; set; }
         public DateTime PickupDates { get; set; }
+        public string RecurringPickupDayOfWeek { get; set; }
     }
 }

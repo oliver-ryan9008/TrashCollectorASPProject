@@ -22,7 +22,7 @@ namespace TrashCollectorProject.Models
         [DataType(DataType.Date)]
         public DateTime? OneTimePickupDate { get; set; }
         //public DateTime OneTimePickupDate { get; set; }
-        public string MoneyOwed { get; set; }
+        public int? MoneyOwed { get; set; }
 
         //FK to ApplicationUser
         [ForeignKey("ApplicationUser")]

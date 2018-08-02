@@ -84,6 +84,7 @@ namespace TrashCollectorProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                customer.MoneyOwed = 0;
                 customer.UserId = User.Identity.GetUserId();                
                 db.Customers.Add(customer);
                 db.SaveChanges();
@@ -92,12 +93,6 @@ namespace TrashCollectorProject.Controllers
 
             return View(customer);
         }
-
-        //public ActionResult ChoosePickupDate(Customer customer)
-        //{
-        //    string displayPickupDate;
-        //    return View(displayPickupDate);
-        //}
 
         // GET: Customers/Edit/5
         public ActionResult Edit(int? id)

@@ -199,7 +199,6 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PickupDatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,13 +271,20 @@
     <Compile Include="Migrations\201808011832440_AddedUserIdToCustomerDatabase.Designer.cs">
       <DependentUpon>201808011832440_AddedUserIdToCustomerDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808011943021_UpdatedEmployeeFields.cs" />
+    <Compile Include="Migrations\201808011943021_UpdatedEmployeeFields.Designer.cs">
+      <DependentUpon>201808011943021_UpdatedEmployeeFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808012239369_ChangedMoneyOwedToInt.cs" />
+    <Compile Include="Migrations\201808012239369_ChangedMoneyOwedToInt.Designer.cs">
+      <DependentUpon>201808012239369_ChangedMoneyOwedToInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PickupDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -351,12 +357,8 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\PickupDates\Create.cshtml" />
-    <Content Include="Views\PickupDates\Delete.cshtml" />
-    <Content Include="Views\PickupDates\Details.cshtml" />
-    <Content Include="Views\PickupDates\Edit.cshtml" />
-    <Content Include="Views\PickupDates\Index.cshtml" />
     <Content Include="Views\Customers\ChooseNewOneTimePickup.cshtml" />
+    <Content Include="Views\Employees\EmployeeTodayPickups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -425,6 +427,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808011832440_AddedUserIdToCustomerDatabase.resx">
       <DependentUpon>201808011832440_AddedUserIdToCustomerDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011943021_UpdatedEmployeeFields.resx">
+      <DependentUpon>201808011943021_UpdatedEmployeeFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808012239369_ChangedMoneyOwedToInt.resx">
+      <DependentUpon>201808012239369_ChangedMoneyOwedToInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

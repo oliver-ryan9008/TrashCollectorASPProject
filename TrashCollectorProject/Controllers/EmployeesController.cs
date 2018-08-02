@@ -27,17 +27,53 @@ namespace TrashCollectorProject.Controllers
         }
 
         // GET: Pickups
-        //public ActionResult TodayPickups(Employee employee, Customer customer, PickupDate pickupDate)
-        //{
-        //    if (employee.pickupList.Count() > 0)
-        //    {
-        //        var scheduleToday = (from p in customer. where )
-        //        return View();
-        //    }
-        //    return View(db.PickupDates);
-        //}
+        public ActionResult EmployeeTodayPickups(Employee employee, Customer customer)
+        {
+            var todayDayOfWeek = DateTime.Now.DayOfWeek.ToString();
+            var todayDate = DateTime.Now.Date;
+            var customersMatchingZip = (from p in db.Customers where customer.ZipCode == employee.ZipCode select p).ToList();
+            
+            if (customersMatchingZip.Count() == 0)
+            {
+                return View();
+            }
+            else 
+            {
+                var checkTodayPickups = db.Customers.Where(c => c.OneTimePickupDate == todayDate || c.WeeklyPickupDay == todayDayOfWeek).ToList();
+                if (checkTodayPickups.Count() == 0)
+                {
+                    return View();
+                }
+                else
+                {
+                    return View(checkTodayPickups);
+                }
+            }
+        }
 
-        
+        public int? ChargeCustomer(Customer customer)
+        {
+            
+            customer.MoneyOwed = customer.MoneyOwed + 100;
+            var money = customer.MoneyOwed;
+
+            return money;
+        }
+
+        public ActionResult ConfirmPickup(Customer customer, Employee employee)
+        {
+            var currentCustomerPickup = customer.CustomerId;
+            var findCurrentCustomer = (from c in db.Customers where c.CustomerId == currentCustomerPickup select c).First();
+            var moneyOwed = ChargeCustomer(customer);
+            
+            findCurrentCustomer.MoneyOwed = moneyOwed;
+            findCurrentCustomer.MoneyOwed = customer.MoneyOwed;
+            
+                
+            db.SaveChanges();
+            return View("EmployeeTodayPickups");
+            
+        }
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
@@ -71,7 +107,7 @@ namespace TrashCollectorProject.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("EmployeeTodayPickups");
             }
 
             return View(employee);
@@ -103,7 +139,7 @@ namespace TrashCollectorProject.Controllers
             {
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("EmployeeTodayPickups");
             }
             return View(employee);
         }
